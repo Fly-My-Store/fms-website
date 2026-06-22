@@ -1,25 +1,24 @@
 import { site } from '@/lib/site';
 
-export const privacySections = [
+export const privacyCustomerSections = [
   {
     title: '1. Introduction',
-    body: `This Privacy Policy ("Policy") describes how ${site.legalName} ("${site.name}", "we", "us", or "our") collects, uses, stores, shares, and protects personal information when you access or use our website at ${site.domain}, mobile applications (including the Customer, Seller, and Rider apps), and related services (collectively, the "Platform").`,
+    body: `This Privacy Policy ("Policy") describes how ${site.legalName} ("${site.name}", "we", "us", or "our") collects, uses, stores, shares, and protects personal information when you use the Fly My Store Customer mobile application, our website at ${site.domain}, and related customer services (collectively, the "Customer Services").`,
     paragraphs: [
-      'By using the Platform, you acknowledge that you have read and understood this Policy. If you do not agree with this Policy, please do not use the Platform.',
+      'This Policy applies to customers who browse stores, place orders, make payments, and receive deliveries. If you are a seller or delivery rider, please read the privacy policy for your app.',
+      'By using the Customer Services, you acknowledge that you have read and understood this Policy. If you do not agree, please do not use the Customer app.',
       'This Policy is published in accordance with applicable Indian laws, including the Information Technology Act, 2000, the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011, and the Digital Personal Data Protection Act, 2023, to the extent applicable.',
     ],
   },
   {
-    title: '2. Scope and roles',
-    body: 'This Policy applies to all users of the Platform, including:',
+    title: '2. Who this policy covers',
+    body: 'This Policy is for users of the Fly My Store Customer app. It does not replace the separate privacy policies for:',
     list: [
-      'Customers who browse stores, place orders, and receive deliveries',
-      'Sellers who list products, manage stores, and fulfill orders',
-      'Riders who accept and complete delivery assignments',
-      'Visitors to our website and users who contact support',
+      'Sellers using the Fly My Store Seller app',
+      'Riders using the Fly My Store Rider (Delivery) app',
     ],
     paragraphs: [
-      `${site.name} operates as a technology platform that connects customers, sellers, and riders. Sellers are independent merchants responsible for their product listings, pricing, and fulfillment. Riders are independent delivery partners responsible for completing assigned deliveries.`,
+      `${site.name} operates as a technology platform connecting customers, sellers, and riders. Sellers fulfill product orders and riders complete deliveries on behalf of stores and customers.`,
     ],
   },
   {
@@ -31,10 +30,8 @@ export const privacySections = [
         list: [
           'Name, phone number, email address, and profile details',
           'Delivery addresses, saved locations, and address labels',
-          'Order details, cart contents, preferences, and support messages',
+          'Order details, cart contents, delivery instructions, and support messages',
           'Attachments uploaded with support tickets',
-          'Seller store details, business information, catalog data, and inventory information',
-          'Rider profile, vehicle details, availability, and delivery status updates',
           'OTP verification data and account deletion requests',
         ],
       },
@@ -44,8 +41,7 @@ export const privacySections = [
           'Device information such as device model, operating system, app version, and unique device identifiers',
           'Log data including IP address, access times, pages viewed, and app interactions',
           'Push notification tokens for order and service updates',
-          'Approximate or precise location data when you grant permission (for store discovery, delivery routing, and live tracking)',
-          'Background location data for riders while on active delivery duty, where permitted by you and applicable law',
+          'Approximate or precise location data when you grant permission (for store discovery and delivery to your address)',
         ],
       },
       {
@@ -72,8 +68,7 @@ export const privacySections = [
     body: 'Certain information we process may be considered sensitive personal data or information under Indian law, including:',
     list: [
       'Financial information related to payment transactions (processed by payment partners)',
-      'Precise geolocation data used for delivery and rider tracking',
-      'Government-issued identification or business documents, if submitted for seller or rider verification',
+      'Precise geolocation data used to show nearby stores and delivery availability',
     ],
     paragraphs: [
       'We collect and process such information only where necessary, with your consent or other lawful basis, and in accordance with applicable law.',
@@ -83,16 +78,14 @@ export const privacySections = [
     title: '5. How we use your information',
     body: 'We use personal information for the following purposes:',
     list: [
-      'Creating and managing user accounts and authenticating users via OTP',
-      'Enabling customers to discover stores, place orders, and receive deliveries',
-      'Enabling sellers to manage stores, products, orders, and payouts',
-      'Enabling riders to receive, accept, and complete delivery assignments',
+      'Creating and managing your customer account and authenticating you via OTP',
+      'Enabling you to discover stores, place orders, and receive deliveries',
       'Processing payments, refunds, and transaction records',
       'Providing order status updates, push notifications, SMS, and email communications',
-      'Displaying live or periodic location updates for order tracking',
+      'Showing order and delivery progress in the app',
       'Operating customer support, dispute handling, and account deletion workflows',
-      'Improving Platform performance, security, fraud prevention, and user experience',
-      'Complying with legal obligations, law enforcement requests, and regulatory requirements',
+      'Improving app performance, security, fraud prevention, and user experience',
+      'Complying with legal obligations and regulatory requirements',
     ],
   },
   {
@@ -109,10 +102,8 @@ export const privacySections = [
     title: '7. How we share information',
     body: 'We may share personal information in the following circumstances:',
     list: [
-      'With sellers, to fulfill customer orders (such as name, phone number, delivery address, and order details)',
-      'With riders, to complete deliveries (such as pickup/drop details, customer contact information, and location data)',
-      'With customers, limited seller/rider information needed for order fulfillment and support',
-      'With service providers who assist us in operating the Platform, including cloud hosting, payment processing (Razorpay), SMS/OTP delivery (2Factor.in), email delivery (SendGrid), push notifications (Firebase), analytics, and customer support tools',
+      'With sellers and riders, as needed to fulfill your orders (such as name, phone number, delivery address, and order details)',
+      'With service providers who help us operate the Customer app, including cloud hosting, payment processing (Razorpay), SMS/OTP delivery (2Factor.in), email delivery (SendGrid), push notifications (Firebase), and customer support tools',
       'With government authorities, regulators, courts, or law enforcement when required by law or to protect rights, safety, and security',
       'In connection with a merger, acquisition, financing, or sale of assets, subject to appropriate safeguards',
     ],

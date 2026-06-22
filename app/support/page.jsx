@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import LegalPage from '@/components/LegalPage';
+import { legalRoles } from '@/lib/legal';
 import { site } from '@/lib/site';
 
 export const metadata = {
@@ -59,12 +60,23 @@ export default function SupportPage() {
       </section>
 
       <section>
-        <h2>Legal</h2>
-        <p>
-          Read our{' '}
-          <Link href="/privacy-policy">Privacy Policy</Link> and{' '}
-          <Link href="/terms">Terms of Service</Link>.
-        </p>
+        <h2>Legal documents</h2>
+        <div className="space-y-4">
+          {legalRoles.map((role) => (
+            <div key={role.id}>
+              <h3 className="font-semibold text-slate-900">{role.label}</h3>
+              <p className="mt-2">
+                <Link href={role.privacyPath} className="text-blue-600 hover:text-blue-700">
+                  Privacy Policy
+                </Link>
+                {' · '}
+                <Link href={role.termsPath} className="text-blue-600 hover:text-blue-700">
+                  Terms of Service
+                </Link>
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
     </LegalPage>
   );

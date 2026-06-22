@@ -1,24 +1,19 @@
 import { site } from '@/lib/site';
 
-export const termsSections = [
+export const termsCustomerSections = [
   {
     title: '1. Agreement to terms',
-    body: `These Terms of Service ("Terms") constitute a legally binding agreement between you and ${site.legalName} ("${site.name}", "we", "us", or "our") governing your access to and use of our website at ${site.domain}, mobile applications (Customer, Seller, and Rider apps), and related services (collectively, the "Platform").`,
+    body: `These Customer Terms of Service ("Terms") govern your use of the Fly My Store Customer mobile application, our website at ${site.domain}, and related customer services provided by ${site.legalName} ("${site.name}", "we", "us", or "our").`,
     paragraphs: [
-      'By creating an account, accessing, or using the Platform, you agree to these Terms and our Privacy Policy. If you do not agree, you must not use the Platform.',
-      'If you use the Platform on behalf of a business or other entity, you represent that you have authority to bind that entity to these Terms.',
+      'By creating a customer account or placing an order, you agree to these Terms and our Customer Privacy Policy.',
+      'Sellers and riders are subject to separate terms for their respective apps.',
     ],
   },
   {
     title: '2. About the Platform',
-    body: `${site.name} is a hyperlocal commerce and delivery technology platform that enables:`,
-    list: [
-      'Customers to discover local stores, place orders, make payments, and receive deliveries',
-      'Sellers to list products, manage inventory, accept orders, and coordinate fulfillment',
-      'Riders to accept delivery assignments and complete deliveries',
-    ],
+    body: `${site.name} is a hyperlocal commerce platform that lets you discover neighbourhood stores, place orders, pay online, and receive deliveries.`,
     paragraphs: [
-      'Unless expressly stated otherwise, we act as an intermediary platform. Products listed on the Platform are generally offered by independent sellers, not by us. We do not guarantee the quality, safety, legality, or availability of products listed by sellers.',
+      'Products are generally offered by independent sellers, not by us. We facilitate ordering, payments, and delivery coordination but do not guarantee product quality, safety, or availability unless expressly stated.',
     ],
   },
   {
@@ -30,9 +25,7 @@ export const termsSections = [
       'Maintain the security of your account credentials and OTP verification codes',
       'Comply with all applicable laws, including local commerce, tax, transport, and food safety regulations where relevant',
     ],
-    paragraphs: [
-      'Sellers and riders may be subject to additional onboarding, verification, and compliance requirements.',
-    ],
+    paragraphs: [],
   },
   {
     title: '4. Account registration and security',
@@ -45,8 +38,8 @@ export const termsSections = [
     ],
   },
   {
-    title: '5. Customer terms',
-    body: 'If you use the Customer app, the following terms apply:',
+    title: '5. Orders, payments, and delivery',
+    body: 'The following terms apply to customer orders:',
     subsections: [
       {
         title: '5.1 Orders',
@@ -85,30 +78,15 @@ export const termsSections = [
     ],
   },
   {
-    title: '6. Seller terms',
-    body: 'If you use the Seller app, the following terms apply:',
+    title: '6. Other Fly My Store apps',
+    body: 'If you use a different Fly My Store application, separate terms apply:',
     list: [
-      'You are solely responsible for your store listings, product descriptions, pricing, stock availability, packaging, and legal compliance',
-      'You must fulfill accepted orders promptly and in accordance with applicable laws and Platform policies',
-      'You grant us a limited license to display your store name, logos, product content, and related materials for Platform operation and promotion',
-      'You are responsible for taxes, licenses, permits, and regulatory obligations applicable to your business',
-      'You must not list prohibited, counterfeit, unsafe, or illegal products',
-      'We may remove listings, suspend stores, or withhold settlements for violations, customer complaints, or legal risk',
+      'Seller app: https://flymystore.com/seller/terms',
+      'Rider app: https://flymystore.com/rider/terms',
     ],
   },
   {
-    title: '7. Rider terms',
-    body: 'If you use the Rider app, the following terms apply:',
-    list: [
-      'You are an independent delivery partner and not an employee, agent, or partner of ours unless expressly agreed in writing',
-      'You must comply with traffic laws, safety requirements, and local delivery regulations',
-      'You agree to provide accurate location updates while performing active deliveries, where enabled',
-      'You must handle orders carefully and maintain professional conduct with customers and sellers',
-      'We may suspend rider access for safety concerns, fraud, repeated complaints, or policy violations',
-    ],
-  },
-  {
-    title: '8. Acceptable use',
+    title: '7. Acceptable use',
     body: 'You agree not to:',
     list: [
       'Use the Platform for unlawful, fraudulent, abusive, or harmful purposes',
@@ -157,8 +135,7 @@ export const termsSections = [
     list: [
       'Your use of the Platform',
       'Your violation of these Terms or applicable law',
-      'Your products, services, listings, or conduct as a seller or rider',
-      'Any dispute between you and another user',
+      'Any dispute between you and a seller, rider, or another user',
     ],
   },
   {

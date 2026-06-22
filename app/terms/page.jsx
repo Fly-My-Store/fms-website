@@ -1,20 +1,22 @@
 import LegalPage from '@/components/LegalPage';
 import LegalSections from '@/components/LegalSections';
-import { termsSections } from '@/content/terms';
+import { termsCustomerSections } from '@/content/terms-customer';
 import { site } from '@/lib/site';
 
 export const metadata = {
-  title: 'Terms of Service',
-  description: `Terms of Service for ${site.name} — rules and conditions for using our platform.`,
+  title: 'Customer Terms of Service',
+  description: `Terms of Service for Fly My Store customers.`,
 };
 
 export default function TermsPage() {
   return (
     <LegalPage
-      title="Terms of Service"
+      title="Customer Terms of Service"
       description={`Last updated: ${site.lastUpdated}`}
+      activeRole="customer"
+      pageType="terms"
     >
-      <LegalSections sections={termsSections} />
+      <LegalSections sections={termsCustomerSections} />
     </LegalPage>
   );
 }
