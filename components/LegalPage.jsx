@@ -2,7 +2,7 @@ import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import LegalCrossLinks from '@/components/LegalCrossLinks';
 
-export default function LegalPage({ title, description, activeRole, pageType, children }) {
+export default function LegalPage({ title, description, currentPath, children }) {
   return (
     <div className="flex min-h-screen flex-col bg-white">
       <SiteHeader />
@@ -18,9 +18,7 @@ export default function LegalPage({ title, description, activeRole, pageType, ch
           </header>
           <article className="legal-content space-y-6 text-slate-700">
             {children}
-            {activeRole && pageType ? (
-              <LegalCrossLinks activeRole={activeRole} pageType={pageType} />
-            ) : null}
+            {currentPath ? <LegalCrossLinks currentPath={currentPath} /> : null}
           </article>
         </div>
       </main>

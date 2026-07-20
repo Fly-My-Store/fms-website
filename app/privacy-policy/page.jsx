@@ -1,22 +1,20 @@
 import LegalPage from '@/components/LegalPage';
 import LegalSections from '@/components/LegalSections';
-import { privacyCustomerSections } from '@/content/privacy-customer';
-import { site } from '@/lib/site';
+import { privacyPolicySections } from '@/content/privacy-policy';
 
 export const metadata = {
-  title: 'Customer Privacy Policy',
-  description: `Privacy Policy for Fly My Store customers.`,
+  title: 'Privacy Policy',
+  description: 'Privacy Policy for Fly My Store customers, sellers, and riders.',
 };
 
 export default function PrivacyPolicyPage() {
   return (
     <LegalPage
-      title="Customer Privacy Policy"
-      description={`Last updated: ${site.lastUpdated}`}
-      activeRole="customer"
-      pageType="privacy"
+      title="Privacy Policy"
+      description="Last updated: July 20, 2026"
+      currentPath="/privacy-policy"
     >
-      <LegalSections sections={privacyCustomerSections} />
+      <LegalSections sections={privacyPolicySections} />
     </LegalPage>
   );
 }
