@@ -8,7 +8,6 @@ import FeaturesSection from '@/components/landing/FeaturesSection';
 import HeroSection from '@/components/landing/HeroSection';
 import HowItWorksSection from '@/components/landing/HowItWorksSection';
 import PartnerStrip from '@/components/landing/PartnerStrip';
-import TestimonialsSection from '@/components/landing/TestimonialsSection';
 
 export default function HomePage() {
   return (
@@ -20,7 +19,6 @@ export default function HomePage() {
         <HowItWorksSection />
         <BenefitsSection />
         <FeaturesSection />
-        <TestimonialsSection />
         <DownloadSection />
         <FaqSection />
         <PartnerStrip />

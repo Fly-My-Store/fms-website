@@ -10,7 +10,7 @@ export default function BenefitsSection() {
             Built for customers who want speed, trust, and convenience
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-slate-600">
-            Like Instamart and Zepto, we focus on fast delivery — but powered by real local stores in your area.
+            A complete local commerce platform: customers shop, sellers pack, and riders deliver — all in dedicated apps.
           </p>
         </div>
 

@@ -11,10 +11,10 @@ export default function PartnerStrip() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">For partners</p>
-            <h2 className="mt-2 text-2xl font-bold text-slate-900">Also building for sellers & riders</h2>
+            <h2 className="mt-2 text-2xl font-bold text-slate-900">Seller & rider apps</h2>
           </div>
           <p className="max-w-lg text-sm text-slate-600">
-            Fly My Store is a full platform. Customers shop here first — sellers and riders power the network behind every order.
+            Sellers confirm and pack orders. Riders accept jobs, navigate to pickup and drop, and mark deliveries complete.
           </p>
         </div>
 

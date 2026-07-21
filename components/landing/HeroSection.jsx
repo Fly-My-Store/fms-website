@@ -39,10 +39,10 @@ function PhoneMockup() {
             <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs font-semibold text-white">Order #2841</p>
+                  <p className="text-xs font-semibold text-white">Your order</p>
                   <p className="text-[10px] text-slate-400">Out for delivery</p>
                 </div>
-                <span className="text-xs font-semibold text-blue-300">12 min</span>
+                <span className="text-xs font-semibold text-blue-300">Live</span>
               </div>
               <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-800">
                 <div className="h-full w-3/4 rounded-full bg-blue-500" />
@@ -67,7 +67,7 @@ export default function HeroSection() {
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-blue-200">
             <span className="h-2 w-2 rounded-full bg-emerald-400" />
-            Now delivering in your city
+            Customer · Seller · Rider apps
           </div>
 
           <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
@@ -79,14 +79,14 @@ export default function HeroSection() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#download"
+            <Link
+              href="/#download"
               className="inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-6 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
             >
-              Download customer app
-            </a>
+              Get the customer app
+            </Link>
             <Link
-              href="#how-it-works"
+              href="/#how-it-works"
               className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               See how it works

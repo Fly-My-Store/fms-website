@@ -16,8 +16,8 @@ export default function DownloadSection() {
                 Get Fly My Store on your phone
               </h2>
               <p className="mt-4 max-w-xl text-blue-100">
-                Download the customer app to browse local stores, place orders, pay securely, and track
-                deliveries in real time.
+                Browse neighbourhood stores, checkout with Razorpay or COD, and follow order status until
+                delivery. Seller and rider apps power packing and fulfilment.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -30,7 +30,7 @@ export default function DownloadSection() {
               </div>
 
               <p className="mt-6 text-sm text-blue-100">
-                Need help before launch?{' '}
+                Need help or partner onboarding?{' '}
                 <Link href="/support" className="font-semibold text-white underline underline-offset-4">
                   Contact support
                 </Link>
@@ -38,7 +38,7 @@ export default function DownloadSection() {
             </div>
 
             <div className="rounded-3xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm">
-              <p className="text-sm font-semibold text-blue-100">While you wait</p>
+              <p className="text-sm font-semibold text-blue-100">Before you join</p>
               <ul className="mt-4 space-y-3 text-sm text-white">
                 <li className="flex gap-3">
                   <span className="text-blue-200">✓</span>
@@ -46,11 +46,11 @@ export default function DownloadSection() {
                 </li>
                 <li className="flex gap-3">
                   <span className="text-blue-200">✓</span>
-                  <span>Reach us at {site.supportEmail} for early access questions</span>
+                  <span>Email {site.supportEmail} or call {site.supportPhone}</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-blue-200">✓</span>
-                  <span>Sellers and riders can contact support for partner onboarding</span>
+                  <span>Sellers and riders: contact support for partner onboarding</span>
                 </li>
               </ul>
             </div>

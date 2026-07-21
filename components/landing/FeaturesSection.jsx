@@ -47,7 +47,7 @@ export default function FeaturesSection() {
                 <div className="flex gap-2">
                   <span className="rounded-full bg-white/10 px-3 py-1 text-xs">UPI</span>
                   <span className="rounded-full bg-white/10 px-3 py-1 text-xs">Cards</span>
-                  <span className="rounded-full bg-white/10 px-3 py-1 text-xs">Wallets</span>
+                  <span className="rounded-full bg-white/10 px-3 py-1 text-xs">COD</span>
                 </div>
               </div>
             </div>

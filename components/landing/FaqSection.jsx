@@ -10,7 +10,7 @@ export default function FaqSection() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">FAQ</p>
             <h2 className="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">
-              Questions from new customers
+              Common questions
             </h2>
             <p className="mt-4 text-slate-600">
               Still need help? Our support team is ready at{' '}
