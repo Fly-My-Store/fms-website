@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import { apps } from '@/lib/site';
 
 export default function PartnerStrip() {
@@ -36,12 +34,24 @@ export default function PartnerStrip() {
                   <p className="mt-2 text-sm text-slate-600">{app.description}</p>
                 </div>
               </div>
-              <Link
-                href={app.href}
-                className="mt-4 inline-flex text-sm font-semibold text-blue-600 hover:text-blue-700"
-              >
-                Partner support →
-              </Link>
+              <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
+                <a
+                  href={app.ios}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-700"
+                >
+                  App Store →
+                </a>
+                <a
+                  href={app.android}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-700"
+                >
+                  Google Play →
+                </a>
+              </div>
             </article>
           ))}
         </div>

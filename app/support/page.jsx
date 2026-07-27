@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import LegalPage from '@/components/LegalPage';
 import { legalDocuments } from '@/lib/legal';
-import { site } from '@/lib/site';
+import { apps, site } from '@/lib/site';
 
 export const metadata = {
   title: 'Support',
@@ -45,6 +45,25 @@ export default function SupportPage() {
           <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a> or call{' '}
           <a href={`tel:${site.supportPhoneTel}`}>{site.supportPhone}</a>.
         </p>
+      </section>
+
+      <section>
+        <h2>Get the apps</h2>
+        <ul className="mt-2 space-y-3">
+          {apps.map((app) => (
+            <li key={app.id}>
+              <span className="font-semibold text-slate-900">{app.label}</span>
+              {' — '}
+              <a href={app.ios} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700">
+                App Store
+              </a>
+              {' · '}
+              <a href={app.android} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700">
+                Google Play
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section>

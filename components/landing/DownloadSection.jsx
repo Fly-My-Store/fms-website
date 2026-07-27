@@ -1,8 +1,27 @@
 import Link from 'next/link';
 
-import { site } from '@/lib/site';
+import { site, storeLinks } from '@/lib/site';
+
+function StoreBadge({ href, label, light = false }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={
+        light
+          ? 'inline-flex h-12 items-center justify-center rounded-full border border-white/20 bg-white/10 px-5 text-sm font-semibold text-white transition hover:bg-white/20'
+          : 'inline-flex h-12 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-slate-900 transition hover:bg-blue-50'
+      }
+    >
+      {label}
+    </a>
+  );
+}
 
 export default function DownloadSection() {
+  const { customer } = storeLinks;
+
   return (
     <section id="download" className="bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -21,12 +40,8 @@ export default function DownloadSection() {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <span className="inline-flex h-12 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-slate-900">
-                  App Store — coming soon
-                </span>
-                <span className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 bg-white/10 px-5 text-sm font-semibold text-white">
-                  Google Play — coming soon
-                </span>
+                <StoreBadge href={customer.ios} label="Download on the App Store" />
+                <StoreBadge href={customer.android} label="Get it on Google Play" light />
               </div>
 
               <p className="mt-6 text-sm text-blue-100">
@@ -50,7 +65,7 @@ export default function DownloadSection() {
                 </li>
                 <li className="flex gap-3">
                   <span className="text-blue-200">✓</span>
-                  <span>Sellers and riders: contact support for partner onboarding</span>
+                  <span>Sellers and riders: download partner apps below, or contact support for onboarding</span>
                 </li>
               </ul>
             </div>
