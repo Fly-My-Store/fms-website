@@ -27,7 +27,7 @@ export const termsSellerSections = [
   },
   {
     title: '4. Store listings and catalog',
-    body: 'You are solely responsible for your product listings, descriptions, images, prices, stock availability, and category placement.',
+    body: 'You are solely responsible for your product listings, descriptions, images, prices, availability (In stock / Out of stock), and category placement.',
     list: [
       'Listings must be accurate, lawful, and not misleading',
       'You must not sell prohibited, counterfeit, unsafe, or restricted products',
@@ -42,7 +42,7 @@ export const termsSellerSections = [
       'You are responsible for accepting, preparing, and handing over orders on time',
       'You must keep inventory and availability accurate',
       'You must cooperate with riders and customers for successful pickup or delivery',
-      'You may cancel only for valid reasons such as stock unavailability, safety concerns, or operational issues',
+      'You may cancel paid orders before packing for valid reasons such as out of stock, store closure, safety concerns, or operational issues',
     ],
   },
   {
