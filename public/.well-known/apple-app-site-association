@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "F4Y443R4L2.com.fmscustomerapp",
+        "paths": ["/x/*"]
+      }
+    ]
+  }
+}

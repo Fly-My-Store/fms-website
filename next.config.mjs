@@ -1,5 +1,33 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async headers() {
+    const wellKnown = [
+      { key: 'Content-Type', value: 'application/json' },
+      { key: 'Cache-Control', value: 'public, max-age=300' },
+    ];
+    return [
+      {
+        source: '/.well-known/apple-app-site-association',
+        headers: wellKnown,
+      },
+      {
+        source: '/apple-app-site-association',
+        headers: wellKnown,
+      },
+      {
+        source: '/.well-known/assetlinks.json',
+        headers: wellKnown,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/apple-app-site-association',
+        destination: '/.well-known/apple-app-site-association',
+      },
+    ];
+  },
   async redirects() {
     return [
       {
