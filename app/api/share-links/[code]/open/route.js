@@ -1,13 +1,16 @@
 import { NextResponse } from 'next/server';
 
-const API_BASE = (process.env.FMS_API_URL || 'https://api.flymystore.com/api/v1').replace(/\/+$/, '');
+import { apiBaseForLane, normalizeShareLane } from '@/lib/shareLink';
 
-export async function POST(_req, { params }) {
+export async function POST(req, { params }) {
   const { code } = await params;
   const value = String(code || '').trim();
   if (!value) {
     return NextResponse.json({ ok: false, message: 'code is required' }, { status: 400 });
   }
+  const { searchParams } = new URL(req.url);
+  const lane = normalizeShareLane(searchParams.get('lane'));
+  const API_BASE = apiBaseForLane(lane);
   try {
     const res = await fetch(`${API_BASE}/public/share-links/${encodeURIComponent(value)}/open`, {
       method: 'POST',

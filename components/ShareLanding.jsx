@@ -3,20 +3,22 @@
 import { useEffect } from 'react';
 
 import { storeLinks } from '@/lib/site';
-import { formatPrice, playStoreUrlForCode } from '@/lib/shareLink';
+import { formatPrice, normalizeShareLane, playStoreUrlForCode } from '@/lib/shareLink';
 
-export default function ShareLanding({ code, data }) {
+export default function ShareLanding({ code, data, lane = 'x' }) {
+  const resolvedLane = normalizeShareLane(lane);
   const preview = data?.preview || {};
   const android = data?.stores?.android || playStoreUrlForCode(code, storeLinks.customer.android);
   const ios = data?.stores?.ios || storeLinks.customer.ios;
-  const appUrl = `fms://x/${code}`;
+  const appUrl = `fms://${resolvedLane}/${code}`;
   const price = formatPrice(preview.price_cents);
 
   useEffect(() => {
     const ua = navigator.userAgent || '';
     const isBot = /bot|crawler|spider|facebookexternalhit|WhatsApp|Slackbot|Twitterbot/i.test(ua);
     if (code && !isBot) {
-      fetch(`/api/share-links/${encodeURIComponent(code)}/open`, { method: 'POST' }).catch(() => {});
+      const qs = resolvedLane === 'xt' ? '?lane=xt' : '';
+      fetch(`/api/share-links/${encodeURIComponent(code)}/open${qs}`, { method: 'POST' }).catch(() => {});
     }
     const isMobile = /iPhone|iPad|iPod|Android/i.test(ua);
     if (!isMobile) return undefined;
@@ -24,11 +26,14 @@ export default function ShareLanding({ code, data }) {
       window.location.href = appUrl;
     }, 300);
     return () => window.clearTimeout(t);
-  }, [appUrl, code]);
+  }, [appUrl, code, resolvedLane]);
 
   return (
     <main className="mx-auto flex min-h-screen max-w-lg flex-col px-4 py-10 sm:py-16">
       <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">Fly My Store</p>
+      {resolvedLane === 'xt' ? (
+        <p className="mt-1 text-xs font-medium text-amber-700">Development link</p>
+      ) : null}
       <div className="mt-6 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
         {preview.image_url ? (
           // eslint-disable-next-line @next/next/no-img-element
