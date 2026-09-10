@@ -25,29 +25,41 @@ function androidIntentOpenUrl(code, lane, playStoreUrl) {
   return `intent://${path}#Intent;scheme=fms;package=${ANDROID_PACKAGE};S.browser_fallback_url=${fallback};end`;
 }
 
+/**
+ * Silent clipboard write (no Copy UI).
+ * Safari only allows this inside a user tap — auto-redirect timers usually fail.
+ * Returns true when the token was written.
+ */
 async function writeIosHandoff(code, lane) {
   const token = buildClipboardHandoffToken(code, lane);
-  if (!token || typeof navigator === 'undefined') return;
+  if (!token || typeof navigator === 'undefined') return false;
+
   try {
     if (navigator.clipboard?.writeText) {
       await navigator.clipboard.writeText(token);
-      return;
+      return true;
     }
   } catch {
-    // fall through to legacy path
+    // fall through
   }
+
   try {
     const el = document.createElement('textarea');
     el.value = token;
     el.setAttribute('readonly', '');
     el.style.position = 'fixed';
-    el.style.left = '-9999px';
+    el.style.top = '0';
+    el.style.left = '0';
+    el.style.opacity = '0';
     document.body.appendChild(el);
+    el.focus();
     el.select();
-    document.execCommand('copy');
+    el.setSelectionRange(0, token.length);
+    const ok = document.execCommand('copy');
     document.body.removeChild(el);
+    return ok;
   } catch {
-    // ignore — install still works; user can re-tap the link
+    return false;
   }
 }
 
@@ -61,6 +73,7 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
   const price = formatPrice(preview.price_cents);
   const [platform, setPlatform] = useState('other');
   const [storeBusy, setStoreBusy] = useState(false);
+  const [handoffNote, setHandoffNote] = useState('');
   const autoRedirectDone = useRef(false);
 
   useEffect(() => {
@@ -78,49 +91,31 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
 
   const primaryStoreUrl = platform === 'android' ? android : ios;
 
-  const goToStore = useCallback(async (storeUrl, { iosHandoff = false } = {}) => {
-    if (!storeUrl || storeBusy) return;
+  const goToIosAppStore = useCallback(async () => {
+    if (!ios || storeBusy) return;
     setStoreBusy(true);
-    try {
-      if (iosHandoff) {
-        await writeIosHandoff(code, resolvedLane);
-      }
-    } finally {
-      window.location.href = storeUrl;
-    }
-  }, [code, resolvedLane, storeBusy]);
+    setHandoffNote('Saving this product…');
+    const saved = await writeIosHandoff(code, resolvedLane);
+    setHandoffNote(saved ? 'Saved — opening the App Store…' : 'Opening the App Store…');
+    window.location.href = ios;
+  }, [code, ios, resolvedLane, storeBusy]);
 
-  // Auto store / app handoff (bots skipped). Once per page load.
-  // Android: intent → app if installed, else Play.
-  // iOS: clipboard handoff then App Store (never auto fms:// — Safari errors if missing).
+  // Android only: auto intent → app or Play.
+  // iOS: do NOT auto-copy/redirect — Safari blocks clipboard without a tap.
   useEffect(() => {
-    if (!code || (platform !== 'android' && platform !== 'ios')) return undefined;
+    if (platform !== 'android' || !code) return undefined;
     if (autoRedirectDone.current) return undefined;
     const ua = navigator.userAgent || '';
     if (/bot|crawler|spider|facebookexternalhit|WhatsApp|Slackbot|Twitterbot/i.test(ua)) {
       return undefined;
     }
-    let cancelled = false;
     const t = window.setTimeout(() => {
-      if (cancelled || autoRedirectDone.current) return;
+      if (autoRedirectDone.current) return;
       autoRedirectDone.current = true;
-      if (platform === 'android') {
-        window.location.href = androidOpenUrl;
-        return;
-      }
-      (async () => {
-        try {
-          await writeIosHandoff(code, resolvedLane);
-        } finally {
-          if (!cancelled) window.location.href = ios;
-        }
-      })();
+      window.location.href = androidOpenUrl;
     }, 400);
-    return () => {
-      cancelled = true;
-      window.clearTimeout(t);
-    };
-  }, [platform, code, androidOpenUrl, ios, resolvedLane]);
+    return () => window.clearTimeout(t);
+  }, [platform, code, androidOpenUrl]);
 
   const onPrimaryStoreClick = useCallback((event) => {
     event.preventDefault();
@@ -128,17 +123,17 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
       window.location.href = androidOpenUrl;
       return;
     }
-    goToStore(primaryStoreUrl, { iosHandoff: platform === 'ios' });
-  }, [androidOpenUrl, goToStore, platform, primaryStoreUrl]);
+    goToIosAppStore();
+  }, [androidOpenUrl, goToIosAppStore, platform]);
 
   const onIosStoreClick = useCallback((event) => {
     event.preventDefault();
-    goToStore(ios, { iosHandoff: true });
-  }, [goToStore, ios]);
+    goToIosAppStore();
+  }, [goToIosAppStore]);
 
   const footerHint = useMemo(() => {
     if (platform === 'ios') {
-      return 'Redirecting to the App Store… After install, open the app once (or tap this link again).';
+      return 'One tap — we silently save this product (no Copy button). After install, open the app and Allow Paste if asked. Or open this link again.';
     }
     if (platform === 'android') {
       return 'Opening the app if installed — otherwise Google Play. Use Play only if nothing happens.';
@@ -181,8 +176,15 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
           onClick={onPrimaryStoreClick}
           className="inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-5 text-sm font-semibold text-white hover:bg-blue-700"
         >
-          {platform === 'android' ? 'Open app / Get on Google Play' : 'Download on the App Store'}
+          {platform === 'android'
+            ? 'Open app / Get on Google Play'
+            : storeBusy
+              ? 'Opening App Store…'
+              : 'Continue to App Store'}
         </a>
+        {platform === 'ios' && handoffNote ? (
+          <p className="text-center text-xs font-medium text-slate-600">{handoffNote}</p>
+        ) : null}
         <a
           href={platform === 'android' ? androidOpenUrl : appUrl}
           className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 px-5 text-sm font-semibold text-slate-900 hover:bg-slate-50"
@@ -202,7 +204,7 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
               onClick={onIosStoreClick}
               className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 px-5 text-sm font-semibold text-slate-900 hover:bg-slate-50"
             >
-              Download on the App Store
+              Continue to App Store
             </a>
           </>
         ) : platform === 'ios' ? (
@@ -219,7 +221,7 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
               onClick={onIosStoreClick}
               className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 px-5 text-sm font-semibold text-slate-900 hover:bg-slate-50"
             >
-              Download on the App Store
+              Continue to App Store
             </a>
             <a
               href={android}
