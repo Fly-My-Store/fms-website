@@ -10,10 +10,19 @@ import {
   playStoreUrlForCode,
 } from '@/lib/shareLink';
 
+const ANDROID_PACKAGE = 'com.fmscustomerapp';
+
 function detectPlatform(ua = '') {
   if (/Android/i.test(ua)) return 'android';
   if (/iPhone|iPad|iPod/i.test(ua)) return 'ios';
   return 'other';
+}
+
+/** Opens the app if installed; otherwise Chrome falls back to Play Store. */
+function androidIntentOpenUrl(code, lane, playStoreUrl) {
+  const path = `${normalizeShareLane(lane)}/${encodeURIComponent(code)}`;
+  const fallback = encodeURIComponent(playStoreUrl);
+  return `intent://${path}#Intent;scheme=fms;package=${ANDROID_PACKAGE};S.browser_fallback_url=${fallback};end`;
 }
 
 async function writeIosHandoff(code, lane) {
@@ -48,6 +57,7 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
   const android = data?.stores?.android || playStoreUrlForCode(code, storeLinks.customer.android);
   const ios = data?.stores?.ios || storeLinks.customer.ios;
   const appUrl = `fms://${resolvedLane}/${code}`;
+  const androidOpenUrl = androidIntentOpenUrl(code, resolvedLane, android);
   const price = formatPrice(preview.price_cents);
   const [platform, setPlatform] = useState('other');
   const [storeBusy, setStoreBusy] = useState(false);
@@ -65,6 +75,19 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
     }
   }, [code, resolvedLane]);
 
+  // Android: auto-try app, then Play Store via intent fallback (safe; no Safari errors).
+  useEffect(() => {
+    if (platform !== 'android' || !code) return undefined;
+    const ua = navigator.userAgent || '';
+    if (/bot|crawler|spider|facebookexternalhit|WhatsApp|Slackbot|Twitterbot/i.test(ua)) {
+      return undefined;
+    }
+    const t = window.setTimeout(() => {
+      window.location.href = androidOpenUrl;
+    }, 350);
+    return () => window.clearTimeout(t);
+  }, [platform, code, androidOpenUrl]);
+
   const primaryStoreUrl = platform === 'android' ? android : ios;
 
   const goToStore = useCallback(async (storeUrl, { iosHandoff = false } = {}) => {
@@ -81,8 +104,12 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
 
   const onPrimaryStoreClick = useCallback((event) => {
     event.preventDefault();
+    if (platform === 'android') {
+      window.location.href = androidOpenUrl;
+      return;
+    }
     goToStore(primaryStoreUrl, { iosHandoff: platform === 'ios' });
-  }, [goToStore, platform, primaryStoreUrl]);
+  }, [androidOpenUrl, goToStore, platform, primaryStoreUrl]);
 
   const onIosStoreClick = useCallback((event) => {
     event.preventDefault();
@@ -94,7 +121,7 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
       return 'After installing, open the app once — we try to open this product automatically. If not, tap this link again.';
     }
     if (platform === 'android') {
-      return 'Install from the Play button above so this product can open on first launch.';
+      return 'Opening the app if installed — otherwise Google Play. Use Play only if nothing happens.';
     }
     return 'Install the app, then open this link again on your phone.';
   }, [platform]);
@@ -130,26 +157,34 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
 
       <div className="mt-8 flex flex-col gap-3">
         <a
-          href={primaryStoreUrl}
+          href={platform === 'android' ? androidOpenUrl : primaryStoreUrl}
           onClick={onPrimaryStoreClick}
           className="inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-5 text-sm font-semibold text-white hover:bg-blue-700"
         >
-          {platform === 'android' ? 'Get it on Google Play' : 'Download on the App Store'}
+          {platform === 'android' ? 'Open app / Get on Google Play' : 'Download on the App Store'}
         </a>
         <a
-          href={appUrl}
+          href={platform === 'android' ? androidOpenUrl : appUrl}
           className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 px-5 text-sm font-semibold text-slate-900 hover:bg-slate-50"
         >
           Already installed? Open app
         </a>
         {platform === 'android' ? (
-          <a
-            href={ios}
-            onClick={onIosStoreClick}
-            className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 px-5 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-          >
-            Download on the App Store
-          </a>
+          <>
+            <a
+              href={android}
+              className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 px-5 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+            >
+              Google Play only
+            </a>
+            <a
+              href={ios}
+              onClick={onIosStoreClick}
+              className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 px-5 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+            >
+              Download on the App Store
+            </a>
+          </>
         ) : platform === 'ios' ? (
           <a
             href={android}
