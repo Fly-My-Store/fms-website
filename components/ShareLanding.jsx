@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { storeLinks } from '@/lib/site';
 import {
@@ -61,6 +61,7 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
   const price = formatPrice(preview.price_cents);
   const [platform, setPlatform] = useState('other');
   const [storeBusy, setStoreBusy] = useState(false);
+  const autoRedirectDone = useRef(false);
 
   useEffect(() => {
     setPlatform(detectPlatform(navigator.userAgent || ''));
@@ -75,19 +76,6 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
     }
   }, [code, resolvedLane]);
 
-  // Android: auto-try app, then Play Store via intent fallback (safe; no Safari errors).
-  useEffect(() => {
-    if (platform !== 'android' || !code) return undefined;
-    const ua = navigator.userAgent || '';
-    if (/bot|crawler|spider|facebookexternalhit|WhatsApp|Slackbot|Twitterbot/i.test(ua)) {
-      return undefined;
-    }
-    const t = window.setTimeout(() => {
-      window.location.href = androidOpenUrl;
-    }, 350);
-    return () => window.clearTimeout(t);
-  }, [platform, code, androidOpenUrl]);
-
   const primaryStoreUrl = platform === 'android' ? android : ios;
 
   const goToStore = useCallback(async (storeUrl, { iosHandoff = false } = {}) => {
@@ -101,6 +89,38 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
       window.location.href = storeUrl;
     }
   }, [code, resolvedLane, storeBusy]);
+
+  // Auto store / app handoff (bots skipped). Once per page load.
+  // Android: intent → app if installed, else Play.
+  // iOS: clipboard handoff then App Store (never auto fms:// — Safari errors if missing).
+  useEffect(() => {
+    if (!code || (platform !== 'android' && platform !== 'ios')) return undefined;
+    if (autoRedirectDone.current) return undefined;
+    const ua = navigator.userAgent || '';
+    if (/bot|crawler|spider|facebookexternalhit|WhatsApp|Slackbot|Twitterbot/i.test(ua)) {
+      return undefined;
+    }
+    let cancelled = false;
+    const t = window.setTimeout(() => {
+      if (cancelled || autoRedirectDone.current) return;
+      autoRedirectDone.current = true;
+      if (platform === 'android') {
+        window.location.href = androidOpenUrl;
+        return;
+      }
+      (async () => {
+        try {
+          await writeIosHandoff(code, resolvedLane);
+        } finally {
+          if (!cancelled) window.location.href = ios;
+        }
+      })();
+    }, 400);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(t);
+    };
+  }, [platform, code, androidOpenUrl, ios, resolvedLane]);
 
   const onPrimaryStoreClick = useCallback((event) => {
     event.preventDefault();
@@ -118,7 +138,7 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
 
   const footerHint = useMemo(() => {
     if (platform === 'ios') {
-      return 'After installing, open the app once — we try to open this product automatically. If not, tap this link again.';
+      return 'Redirecting to the App Store… After install, open the app once (or tap this link again).';
     }
     if (platform === 'android') {
       return 'Opening the app if installed — otherwise Google Play. Use Play only if nothing happens.';
