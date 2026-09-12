@@ -1,11 +1,14 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.fmscustomerapp",
       "sha256_cert_fingerprints": [
-        "60:66:A8:0F:C8:C7:FD:31:96:AE:03:D5:A2:D5:EA:9E:AB:C7:3F:D4:04:2A:FE:33:A9:6D:06:17:55:AE:67:18"
+        "60:66:A8:0F:C8:C7:FD:31:96:AE:03:D5:A2:D5:EA:9E:AB:C7:3F:D4:04:2A:FE:33:A9:6D:06:17:55:AE:67:18",
+        "EB:C8:F2:4A:21:7D:06:06:A7:DD:A4:01:18:45:2A:F9:13:60:CD:8A:3B:49:03:C7:EA:14:98:42:74:66:0B:DB"
       ]
     }
   }
