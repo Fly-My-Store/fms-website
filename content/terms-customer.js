@@ -75,6 +75,15 @@ export const termsCustomerSections = [
           'We are not responsible for delays caused by banks, payment networks, or third-party processors',
         ],
       },
+      {
+        title: '5.5 Exchange and returns',
+        list: [
+          'Exchange and returns are not available on Fly My Store',
+          'Delivered goods cannot be returned or exchanged through the Platform',
+          'For missing, damaged, incorrect, or other order issues, contact the store using the contact details in the app, or use Get Help on the order',
+          'Any manufacturer or seller warranty remains between you and the seller or brand and is not a Platform return or exchange',
+        ],
+      },
     ],
   },
   {

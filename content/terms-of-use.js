@@ -65,8 +65,7 @@ export const termsOfUseSections = [
     "when the app is closed or not actively in use to ensure delivery tracking updates do not drop",
     "out mid-route. You can modify these permissions anytime in your Android System Settings,",
     "though doing so will restrict key delivery features.",
-    "invoices, or upload unboxing videos/photos of electronics or high-value items for verified",
-    "return requests.",
+    "invoices, or upload photos of electronics or high-value items for support requests.",
     "transactional updates, OTP verifications, and status changes for your active orders.",
     ],
     list: [
