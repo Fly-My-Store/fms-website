@@ -84,6 +84,16 @@ export const termsCustomerSections = [
           'Any manufacturer or seller warranty remains between you and the seller or brand and is not a Platform return or exchange',
         ],
       },
+      {
+        title: '5.6 Pharmacy and prescriptions',
+        list: [
+          'Independent sellers list pharmacy products. Fly My Store does not operate a pharmacy and does not give medical advice, diagnosis, or treatment',
+          'If a product requires a prescription, you must upload a clear photo of a valid prescription before placing the order',
+          'The pharmacy seller reviews the photo and may reject an invalid or unclear prescription and ask you to upload again',
+          'Prescription drugs cannot be purchased on the Platform without a prescription',
+          'Consult a qualified healthcare professional for medical advice',
+        ],
+      },
     ],
   },
   {

@@ -11,7 +11,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terms & Conditions"
-      description="Last updated: July 20, 2026"
+      description="Last updated: September 19, 2026"
       currentPath="/terms"
     >
       <LegalSections sections={termsSections} />

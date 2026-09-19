@@ -1,5 +1,5 @@
+import { fetchRootCategories } from '@/lib/categories';
 import SiteFooter from '@/components/SiteFooter';
-import SiteHeader from '@/components/SiteHeader';
 import BenefitsSection from '@/components/landing/BenefitsSection';
 import CategoryStrip from '@/components/landing/CategoryStrip';
 import DownloadSection from '@/components/landing/DownloadSection';
@@ -9,13 +9,16 @@ import HeroSection from '@/components/landing/HeroSection';
 import HowItWorksSection from '@/components/landing/HowItWorksSection';
 import PartnerStrip from '@/components/landing/PartnerStrip';
 
-export default function HomePage() {
+export const revalidate = 300;
+
+export default async function HomePage() {
+  const categories = await fetchRootCategories();
+
   return (
-    <div className="flex min-h-screen flex-col bg-white">
-      <SiteHeader />
+    <div className="flex min-h-screen flex-col bg-white" data-theme="customer">
       <main className="flex-1">
-        <HeroSection />
-        <CategoryStrip />
+        <HeroSection categories={categories} />
+        <CategoryStrip categories={categories} />
         <HowItWorksSection />
         <BenefitsSection />
         <FeaturesSection />

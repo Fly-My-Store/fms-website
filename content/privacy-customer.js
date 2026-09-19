@@ -31,6 +31,7 @@ export const privacyCustomerSections = [
           'Name, phone number, email address, and profile details',
           'Delivery addresses, saved locations, and address labels',
           'Order details, cart contents, delivery instructions, and support messages',
+          'Prescription photos you upload when a pharmacy product requires a prescription',
           'Attachments uploaded with support tickets',
           'OTP verification data and account deletion requests',
         ],
@@ -69,6 +70,7 @@ export const privacyCustomerSections = [
     list: [
       'Financial information related to payment transactions (processed by payment partners)',
       'Precise geolocation data used to show nearby stores and delivery availability',
+      'Prescription photos uploaded for pharmacy orders',
     ],
     paragraphs: [
       'We collect and process such information only where necessary, with your consent or other lawful basis, and in accordance with applicable law.',
@@ -80,6 +82,7 @@ export const privacyCustomerSections = [
     list: [
       'Creating and managing your customer account and authenticating you via OTP',
       'Enabling you to discover stores, place orders, and receive deliveries',
+      'Collecting and sharing prescription photos with the pharmacy seller for that order when a product requires a prescription',
       'Processing payments, refunds, and transaction records',
       'Providing order status updates, push notifications, SMS, and email communications',
       'Showing order and delivery progress in the app',
@@ -103,6 +106,7 @@ export const privacyCustomerSections = [
     body: 'We may share personal information in the following circumstances:',
     list: [
       'With sellers and riders, as needed to fulfill your orders (such as name, phone number, delivery address, and order details)',
+      'With pharmacy sellers, the prescription photos you uploaded for that order so they can verify a valid prescription',
       'With service providers who help us operate the Customer app, including cloud hosting, payment processing (Razorpay), SMS/OTP delivery (2Factor.in), email delivery (SendGrid), push notifications (Firebase), and customer support tools',
       'With government authorities, regulators, courts, or law enforcement when required by law or to protect rights, safety, and security',
       'In connection with a merger, acquisition, financing, or sale of assets, subject to appropriate safeguards',

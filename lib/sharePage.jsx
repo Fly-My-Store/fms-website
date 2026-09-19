@@ -41,7 +41,7 @@ export function ShareLinkPageForLane(lane) {
           {resolvedLane === 'xt' ? (
             <p className="mt-1 text-xs text-slate-400">Dev lane (/xt) → api-dev</p>
           ) : null}
-          <a href="/" className="mt-6 text-sm font-semibold text-blue-600 underline">
+          <a href="/" className="mt-6 text-sm font-semibold text-brand underline">
             Go to Fly My Store
           </a>
         </main>

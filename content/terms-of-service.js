@@ -23,15 +23,22 @@ export const termsOfServiceSections = [
     "The platform operates on an aggregation model similar to logistics and food delivery applications,",
     "but explicitly excludes the delivery of hot/prepared food.",
     "We enable:",
-    "goods including, but not limited to, Mobile Phones, Electronics, Groceries, Clothes, and",
-    "Shoes.",
     "and make digital or cash payments.",
     "designated Vendor and deliver them to the Customer's localized destination.",
     ],
     list: [
-    "Local Shopkeepers/Merchants (“Vendors”) to list, market, and sell non-food physical",
+    "Local Shopkeepers/Merchants (“Vendors”) to list, market, and sell physical goods including, but not limited to, Pharmacy, Food, Groceries, Mobile Phones, Electronics, Clothes, and Shoes.",
     "Customers to discover local stores within their city, browse product catalogs, place orders,",
     "Independent Logistics Contractors (“Delivery Partners”) to pick up orders from the",
+    ],
+  },
+  {
+    title: "Pharmacy and prescription products",
+    paragraphs: [
+    "The Platform is a marketplace. Independent sellers list pharmacy products. Fly My Store does not operate a pharmacy, does not dispense medicines, and does not give medical advice, diagnosis, or treatment.",
+    "Some pharmacy products require a valid prescription. If a product is marked as requiring a prescription, the customer must upload a clear photo of the prescription before placing the order. The pharmacy seller reviews that photo. The seller may reject an invalid or unclear prescription and ask the customer to upload again. We do not allow the sale of prescription drugs without a prescription.",
+    "Sellers who list pharmacy products must upload a valid pharmacy license. We may review, reject, or suspend pharmacy selling if the license is missing, expired, or invalid.",
+    "Customers should consult a qualified healthcare professional for medical advice.",
     ],
   },
   {
@@ -125,6 +132,7 @@ export const termsOfServiceSections = [
     ],
     list: [
     "Using the Platform to buy, sell, or transport illegal substances, weapons, counterfeit goods,",
+    "Selling or buying prescription drugs on the Platform without a valid prescription.",
     "Manipulating prices, colluding with vendors/delivery agents, creating fake profiles, or",
     "Attempting to reverse-engineer, decompile, scrape, or disrupt the integrity of the FLY MY",
     "Harassing, abusing, or threatening Platform employees, Vendors, or Delivery Partners.",

@@ -11,7 +11,7 @@ export default function PrivacyPolicyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      description="Last updated: July 20, 2026"
+      description="Last updated: September 19, 2026"
       currentPath="/privacy-policy"
     >
       <LegalSections sections={privacyPolicySections} />

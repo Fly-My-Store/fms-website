@@ -16,13 +16,13 @@ export default function LegalCrossLinks({ currentPath }) {
         {others.map((doc, index) => (
           <span key={doc.href}>
             {index > 0 ? ' · ' : null}
-            <Link href={doc.href} className="text-blue-600 hover:text-blue-700">
+            <Link href={doc.href} className="text-brand hover:text-brand-hover">
               {doc.label}
             </Link>
           </span>
         ))}
         .{' '}
-        <Link href="/support" className="text-blue-600 hover:text-blue-700">
+        <Link href="/support" className="text-brand hover:text-brand-hover">
           Support
         </Link>
       </p>

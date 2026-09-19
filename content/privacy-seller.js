@@ -34,6 +34,7 @@ export const privacySellerSections = [
         title: '2.3 Verification and compliance documents',
         list: [
           'Government-issued identification, business registration, or KYC documents submitted during onboarding',
+          'Pharmacy license documents uploaded to sell pharmacy products',
           'Store documents uploaded for verification or compliance review',
         ],
       },
@@ -41,6 +42,7 @@ export const privacySellerSections = [
         title: '2.4 Order and operations data',
         list: [
           'Incoming orders, order status updates, cancellations, and fulfillment records',
+          'Customer prescription photos attached to pharmacy orders that require a prescription',
           'Communications with customers or support regarding orders',
           'Wallet balance, payouts, transaction history, and settlement records',
         ],
@@ -61,6 +63,7 @@ export const privacySellerSections = [
       'Create and manage seller accounts and authenticate users',
       'Onboard, verify, and activate stores on the Platform',
       'Display store and product listings to customers',
+      'Review pharmacy licenses and show customer prescription photos on pharmacy orders so you can verify them',
       'Route customer orders to your store and support order fulfillment',
       'Process settlements, payouts, and financial records',
       'Provide seller support, dispute handling, and compliance review',
@@ -84,7 +87,7 @@ export const privacySellerSections = [
   },
   {
     title: '5. Sensitive and business data',
-    body: 'Some seller information may be considered sensitive personal data or confidential business information under applicable law, including identity documents, financial settlement data, and precise store location.',
+    body: 'Some seller information may be considered sensitive personal data or confidential business information under applicable law, including identity documents, pharmacy licenses, customer prescription photos on your orders, financial settlement data, and precise store location.',
     paragraphs: [
       'We process such information only where necessary to provide the Seller Services, verify your business, process payouts, or comply with law.',
     ],

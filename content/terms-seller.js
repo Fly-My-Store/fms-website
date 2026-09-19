@@ -23,6 +23,8 @@ export const termsSellerSections = [
       'Provide accurate store, contact, and business information',
       'Complete onboarding, verification, and document requirements where requested',
       'Maintain valid licenses, permits, and tax registrations required for your business',
+      'If you sell pharmacy products, upload a valid pharmacy license and keep it current',
+      'Do not sell prescription drugs without a valid prescription. Set prescription required on those products and review customer prescription photos before fulfilling the order',
     ],
   },
   {
@@ -31,6 +33,7 @@ export const termsSellerSections = [
     list: [
       'Listings must be accurate, lawful, and not misleading',
       'You must not sell prohibited, counterfeit, unsafe, or restricted products',
+      'Pharmacy products may be listed only after your pharmacy license is approved. Prescription products must be marked so customers upload a prescription',
       'We may remove listings or suspend stores that violate law or platform policies',
       'You grant us a license to display your store name, branding, and catalog content to operate the Platform',
     ],

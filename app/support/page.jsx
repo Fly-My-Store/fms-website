@@ -54,11 +54,11 @@ export default function SupportPage() {
             <li key={app.id}>
               <span className="font-semibold text-slate-900">{app.label}</span>
               {' — '}
-              <a href={app.ios} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700">
+              <a href={app.ios} target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand-hover">
                 App Store
               </a>
               {' · '}
-              <a href={app.android} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700">
+              <a href={app.android} target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand-hover">
                 Google Play
               </a>
             </li>
@@ -87,7 +87,7 @@ export default function SupportPage() {
           {legalDocuments.map((doc, index) => (
             <span key={doc.href}>
               {index > 0 ? ' · ' : null}
-              <Link href={doc.href} className="text-blue-600 hover:text-blue-700">
+              <Link href={doc.href} className="text-brand hover:text-brand-hover">
                 {doc.label}
               </Link>
             </span>

@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
-import { footerLinks, site } from '@/lib/site';
+import { footerCompanyLinks, footerPartnerLinks, site } from '@/lib/site';
 
 export default function SiteFooter() {
   return (
     <footer className="border-t border-slate-800 bg-slate-950 text-slate-300">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-3">
-          <div>
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
+          <div className="sm:col-span-2 md:col-span-1">
             <p className="text-lg font-semibold text-white">{site.name}</p>
             <p className="mt-3 max-w-sm text-sm leading-6 text-slate-400">{site.description}</p>
           </div>
@@ -15,7 +15,22 @@ export default function SiteFooter() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">Company</p>
             <div className="mt-4 flex flex-col gap-3 text-sm">
-              {footerLinks.map((link) => (
+              {footerCompanyLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="transition-colors hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">Partners</p>
+            <div className="mt-4 flex flex-col gap-3 text-sm">
+              {footerPartnerLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}

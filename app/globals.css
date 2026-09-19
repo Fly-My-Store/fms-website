@@ -3,11 +3,40 @@
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
+  /* Customer app — rgb(0,112,184) */
+  --fms-primary: #0070b8;
+  --fms-primary-hover: #005ca8;
+  --fms-primary-soft: #dcecf8;
+  --fms-primary-navy: #005ca8;
+  --fms-primary-light: #82c8ff;
+}
+
+[data-theme='seller'] {
+  /* Seller app — rgb(0,114,206) */
+  --fms-primary: #0072ce;
+  --fms-primary-hover: #003399;
+  --fms-primary-soft: #dcecfc;
+  --fms-primary-navy: #003399;
+  --fms-primary-light: #00b5cc;
+}
+
+[data-theme='rider'] {
+  /* Rider app — rgb(34,139,34) */
+  --fms-primary: #228b22;
+  --fms-primary-hover: #1b5e20;
+  --fms-primary-soft: #e8f5dc;
+  --fms-primary-navy: #1b5e20;
+  --fms-primary-light: #8bc34a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--fms-primary);
+  --color-brand-hover: var(--fms-primary-hover);
+  --color-brand-soft: var(--fms-primary-soft);
+  --color-brand-navy: var(--fms-primary-navy);
+  --color-brand-light: var(--fms-primary-light);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -84,11 +113,11 @@ details > summary::-webkit-details-marker {
 }
 
 .legal-content a {
-  color: #2563eb;
+  color: var(--fms-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .legal-content a:hover {
-  color: #1d4ed8;
+  color: var(--fms-primary-hover);
 }

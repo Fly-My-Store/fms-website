@@ -1,59 +1,34 @@
-import { apps } from '@/lib/site';
+import Link from 'next/link';
 
 export default function PartnerStrip() {
-  const partnerApps = apps.filter((app) => !app.primary);
-
   return (
     <section className="border-t border-slate-200 bg-slate-50 py-12">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">For partners</p>
-            <h2 className="mt-2 text-2xl font-bold text-slate-900">Seller & rider apps</h2>
-          </div>
-          <p className="max-w-lg text-sm text-slate-600">
-            Sellers confirm and pack orders. Riders accept jobs, navigate to pickup and drop, and mark deliveries complete.
-          </p>
-        </div>
-
+        <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">Partners</p>
+        <h2 className="mt-2 text-2xl font-bold text-slate-900">Own a store or ride with us</h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {partnerApps.map((app) => (
-            <article
-              key={app.id}
-              className="rounded-2xl border border-slate-200 bg-white p-5"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <div
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-sm font-bold text-white"
-                    style={{ backgroundColor: app.accent }}
-                  >
-                    {app.label.charAt(0)}
-                  </div>
-                  <h3 className="mt-4 font-semibold text-slate-900">{app.label}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{app.description}</p>
-                </div>
-              </div>
-              <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
-                <a
-                  href={app.ios}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-700"
-                >
-                  App Store →
-                </a>
-                <a
-                  href={app.android}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-700"
-                >
-                  Google Play →
-                </a>
-              </div>
-            </article>
-          ))}
+          <Link
+            href="/selling-partners"
+            className="rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-[#0072CE]/40 hover:shadow-sm"
+          >
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#0072CE]">Stores</p>
+            <h3 className="mt-2 font-semibold text-slate-900">Sell on Fly My Store</h3>
+            <p className="mt-2 text-sm text-slate-600">
+              Reach customers who already live around your shop. Call us to get onboarded.
+            </p>
+            <span className="mt-4 inline-block text-sm font-semibold text-[#0072CE]">Learn more →</span>
+          </Link>
+          <Link
+            href="/delivery-partners"
+            className="rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-[#228B22]/40 hover:shadow-sm"
+          >
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#228B22]">Riders</p>
+            <h3 className="mt-2 font-semibold text-slate-900">Deliver with Fly My Store</h3>
+            <p className="mt-2 text-sm text-slate-600">
+              Pick up from neighbourhood stores and drop nearby. Call us to join.
+            </p>
+            <span className="mt-4 inline-block text-sm font-semibold text-[#228B22]">Learn more →</span>
+          </Link>
         </div>
       </div>
     </section>

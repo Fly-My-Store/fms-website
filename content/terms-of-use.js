@@ -57,7 +57,7 @@ export const termsOfUseSections = [
   {
     title: "2. Device Permissions & Data Transparency",
     paragraphs: [
-    "To fulfill hyperlocal, multi-vendor deliveries (Mobile Phones, Electronics, Groceries, Clothes,",
+    "To fulfill hyperlocal, multi-vendor deliveries (Pharmacy, Food, Groceries, Mobile Phones, Electronics, Clothes,",
     "Shoes, etc.) from local shopkeepers to your location, the Application requires specific device",
     "permissions.",
     "you with nearby vendors and to enable real-time tracking of your order via our Delivery",
@@ -71,7 +71,7 @@ export const termsOfUseSections = [
     list: [
     "Precise Location Access (GPS): The Application collects precise location data to match",
     "Background Location: If permitted by your device settings, location data may be collected",
-    "Camera & Storage Access: Required if you choose to take a profile picture, scan vendor",
+    "Camera & Storage Access: Required if you choose to photograph a prescription, upload a pharmacy license, take a profile picture, scan vendor",
     "Push Notifications (Firebase Cloud Messaging): Required to send you real-time",
     ],
   },

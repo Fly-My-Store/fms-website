@@ -5,12 +5,12 @@ export default function HowItWorksSection() {
     <section id="how-it-works" className="bg-slate-50 py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">How it works</p>
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand">How it works</p>
           <h2 className="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">
-            From browse to doorstep in three simple steps
+            Shop the store next door, then we bring it
           </h2>
           <p className="mt-4 text-slate-600">
-            Inspired by the best quick-commerce experiences — built for your local neighbourhood stores.
+            Inspired by how you already shop locally — now in the app, with delivery.
           </p>
         </div>
 
@@ -20,7 +20,7 @@ export default function HowItWorksSection() {
               key={item.step}
               className="relative rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
             >
-              <span className="text-sm font-bold text-blue-600">{item.step}</span>
+              <span className="text-sm font-bold text-brand">{item.step}</span>
               <h3 className="mt-4 text-xl font-semibold text-slate-900">{item.title}</h3>
               <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
               {index < howItWorks.length - 1 ? (

@@ -143,7 +143,7 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
 
   return (
     <main className="mx-auto flex min-h-screen max-w-lg flex-col px-4 py-10 sm:py-16">
-      <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">Fly My Store</p>
+      <p className="text-sm font-semibold uppercase tracking-wide text-brand">Fly My Store</p>
       {resolvedLane === 'xt' ? (
         <p className="mt-1 text-xs font-medium text-amber-700">Development link</p>
       ) : null}
@@ -156,7 +156,7 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
             className="h-56 w-full object-cover"
           />
         ) : (
-          <div className="flex h-40 items-center justify-center bg-blue-600 text-white">
+          <div className="flex h-40 items-center justify-center bg-brand text-white">
             <span className="text-lg font-semibold">Fly My Store</span>
           </div>
         )}
@@ -174,7 +174,7 @@ export default function ShareLanding({ code, data, lane = 'x' }) {
         <a
           href={platform === 'android' ? androidOpenUrl : primaryStoreUrl}
           onClick={onPrimaryStoreClick}
-          className="inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-5 text-sm font-semibold text-white hover:bg-blue-700"
+          className="inline-flex h-12 items-center justify-center rounded-full bg-brand px-5 text-sm font-semibold text-white hover:bg-brand-hover"
         >
           {platform === 'android'
             ? 'Open app / Get on Google Play'

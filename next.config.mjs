@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'cdn.flymystore.com' },
+    ],
+  },
   async headers() {
     const wellKnown = [
       { key: 'Content-Type', value: 'application/json' },
@@ -89,6 +94,16 @@ const nextConfig = {
         source: '/rider/terms',
         destination: '/terms',
         permanent: true,
+      },
+      {
+        source: '/sell',
+        destination: '/selling-partners',
+        permanent: false,
+      },
+      {
+        source: '/deliver',
+        destination: '/delivery-partners',
+        permanent: false,
       },
     ];
   },

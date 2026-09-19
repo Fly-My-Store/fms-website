@@ -5,16 +5,16 @@ export default function BenefitsSection() {
     <section className="bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">Why Fly My Store</p>
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand">Why Fly My Store</p>
           <h2 className="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">
-            Built for customers who want speed, trust, and convenience
+            Built for shopping around the corner
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-slate-600">
-            A complete local commerce platform: customers shop, sellers pack, and riders deliver — all in dedicated apps.
+            Local stores on your pin — not a warehouse two cities away.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {benefits.map((benefit) => (
             <article
               key={benefit.title}
